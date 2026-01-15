@@ -33,6 +33,7 @@ export default function Navbar() {
 
   // Public routes - accessible to everyone
   const publicLinks = [
+    
     { name: 'Datasets', href: '/datasets', icon: Database },
     { name: 'Indicators', href: '/indicators', icon: TrendingUp },
     { name: 'Map', href: '/map', icon: FileText },

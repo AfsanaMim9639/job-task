@@ -4,171 +4,29 @@ import { useState } from 'react'
 import { Search, Clock, Eye, ArrowRight, BookOpen, TrendingUp } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { articles } from '@/data/articles'
 
 export default function AllInsightsPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
 
-  const categories = ['All', 'Economic Analysis', 'Infrastructure', 'Healthcare', 'Education', 'Technology', 'Environment', 'Social']
+  // Get unique categories from articles
+  const categories = ['All', ...new Set(articles.map(a => a.category))]
 
-  const insights = [
-    {
-      id: 1,
-      slug: 'bangladesh-digital-economy-grows-28-percent-2025',
-      category: 'Economic Analysis',
-      title: 'Bangladesh\'s Digital Economy Grows 28% in 2025',
-      excerpt: 'The digital economy sector shows remarkable growth with increased e-commerce adoption and fintech innovation across urban and rural areas.',
-      author: 'Dr. Rahman',
-      date: '2 days ago',
-      readTime: '5 min read',
-      views: '12.5K',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
-      featured: true
-    },
-    {
-      id: 2,
-      slug: 'metro-rail-network-expansion-dhaka-traffic',
-      category: 'Infrastructure',
-      title: 'Metro Rail Network Expansion: Impact on Dhaka Traffic',
-      excerpt: 'New data reveals 23% reduction in traffic congestion along metro corridors, with significant improvements in commute times.',
-      author: 'Sarah Ahmed',
-      date: '5 days ago',
-      readTime: '7 min read',
-      views: '8.3K',
-      image: 'https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?w=800&q=80',
-      featured: true
-    },
-    {
-      id: 3,
-      slug: 'rural-healthcare-access-telemedicine',
-      category: 'Healthcare',
-      title: 'Rural Healthcare Access Improves with Telemedicine',
-      excerpt: 'Analysis of 500+ community clinics shows 45% increase in patient consultations through digital health platforms.',
-      author: 'Dr. Fatima',
-      date: '1 week ago',
-      readTime: '6 min read',
-      views: '15.2K',
-      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-      featured: false
-    },
-    {
-      id: 4,
-      slug: 'stem-education-rise-35-percent-enrollments-2025',
-      category: 'Education',
-      title: 'STEM Education Rise: 35% More Enrollments in 2025',
-      excerpt: 'Universities report significant growth in science and technology programs, driven by industry demand and government initiatives.',
-      author: 'Prof. Hasan',
-      date: '1 week ago',
-      readTime: '4 min read',
-      views: '6.7K',
-      image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80',
-      featured: false
-    },
-    {
-      id: 5,
-      slug: 'ai-adoption-bangladesh-tech-startups-growth',
-      category: 'Technology',
-      title: 'AI Adoption in Bangladesh: 67% Growth in Tech Startups',
-      excerpt: 'Local tech companies embrace artificial intelligence and machine learning, creating innovative solutions for regional challenges.',
-      author: 'Tanvir Hassan',
-      date: '3 days ago',
-      readTime: '8 min read',
-      views: '9.8K',
-      image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80',
-      featured: false
-    },
-    {
-      id: 6,
-      slug: 'coastal-mangrove-restoration-positive-results',
-      category: 'Environment',
-      title: 'Coastal Mangrove Restoration Shows Positive Results',
-      excerpt: 'Three-year reforestation project reports 40% increase in mangrove coverage, protecting coastal communities from erosion.',
-      author: 'Dr. Nusrat Jahan',
-      date: '4 days ago',
-      readTime: '6 min read',
-      views: '7.2K',
-      image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80',
-      featured: false
-    },
-    {
-      id: 7,
-      slug: 'export-diversification-beyond-rmg-success',
-      category: 'Economic Analysis',
-      title: 'Export Diversification: Beyond RMG Success Stories',
-      excerpt: 'Pharmaceutical, leather, and ICT sectors show promising growth as Bangladesh reduces dependency on traditional exports.',
-      author: 'Imran Chowdhury',
-      date: '6 days ago',
-      readTime: '9 min read',
-      views: '11.1K',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80',
-      featured: false
-    },
-    {
-      id: 8,
-      slug: 'women-entrepreneurship-rural-areas-rising-trend',
-      category: 'Social',
-      title: 'Women Entrepreneurship: Rising Trend in Rural Areas',
-      excerpt: 'Microfinance and digital banking enable 52% increase in women-led businesses across rural Bangladesh.',
-      author: 'Ayesha Siddiqua',
-      date: '1 week ago',
-      readTime: '5 min read',
-      views: '8.9K',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80',
-      featured: false
-    },
-    {
-      id: 9,
-      slug: 'padma-bridge-economic-impact-first-year',
-      category: 'Infrastructure',
-      title: 'Padma Bridge Economic Impact: First Year Analysis',
-      excerpt: 'Comprehensive study reveals 31% reduction in travel time and significant boost to southern region economy.',
-      author: 'Kamal Ahmed',
-      date: '2 weeks ago',
-      readTime: '10 min read',
-      views: '18.3K',
-      image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=800&q=80',
-      featured: false
-    },
-    {
-      id: 10,
-      slug: 'hospital-bed-capacity-increases-22-percent',
-      category: 'Healthcare',
-      title: 'Hospital Bed Capacity Increases by 22% Nationwide',
-      excerpt: 'Government and private sector investments expand healthcare infrastructure to meet growing demand.',
-      author: 'Dr. Mahmud',
-      date: '2 weeks ago',
-      readTime: '6 min read',
-      views: '5.4K',
-      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80',
-      featured: false
-    },
-    {
-      id: 11,
-      slug: 'digital-learning-platforms-reach-2-million-students',
-      category: 'Education',
-      title: 'Digital Learning Platforms Reach 2 Million Students',
-      excerpt: 'Online education initiatives bridge urban-rural divide with affordable access to quality educational content.',
-      author: 'Farida Rahman',
-      date: '3 weeks ago',
-      readTime: '7 min read',
-      views: '10.6K',
-      image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80',
-      featured: false
-    },
-    {
-      id: 12,
-      slug: '5g-rollout-bangladesh-new-digital-era',
-      category: 'Technology',
-      title: '5G Rollout: Bangladesh Enters New Digital Era',
-      excerpt: 'First phase of 5G network deployment begins in major cities, promising revolutionary connectivity improvements.',
-      author: 'Rafiq Khan',
-      date: '3 weeks ago',
-      readTime: '5 min read',
-      views: '13.2K',
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80',
-      featured: false
-    }
-  ]
+  // Transform articles data to match the display format
+  const insights = articles.map(article => ({
+    id: article.id,
+    slug: article.slug,
+    category: article.category,
+    title: article.title,
+    excerpt: article.excerpt,
+    author: article.author.name,
+    date: article.publishedDate,
+    readTime: article.readTime,
+    views: article.views,
+    image: article.image,
+    featured: article.id <= 2 // Mark first 2 as featured
+  }))
 
   const filteredInsights = insights.filter(insight => {
     const matchesSearch = insight.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -180,9 +38,14 @@ export default function AllInsightsPage() {
 
   const stats = {
     totalArticles: insights.length,
-    totalViews: '126.5K',
+    totalViews: insights.reduce((sum, i) => {
+      const views = parseFloat(i.views.replace('K', '')) * 1000
+      return sum + views
+    }, 0) / 1000 + 'K',
     totalAuthors: new Set(insights.map(i => i.author)).size,
-    avgReadTime: '6.5 min'
+    avgReadTime: Math.round(
+      insights.reduce((sum, i) => sum + parseInt(i.readTime), 0) / insights.length
+    ) + ' min'
   }
 
   return (
