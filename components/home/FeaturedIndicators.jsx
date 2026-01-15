@@ -1,6 +1,7 @@
 'use client'
 
 import { TrendingUp, TrendingDown, Activity } from 'lucide-react'
+import Link from 'next/link'
 
 export default function FeaturedIndicators() {
   const indicators = [
@@ -61,13 +62,13 @@ export default function FeaturedIndicators() {
   ]
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-[#0a0e1a] to-[#0d1428]">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+    <section className="py-24 px-6 bg-gradient-to-b from-[#0a0e1a] to-[#0d1428]">
+      <div className="container max-w-7xl mx-auto">
+        <div className="flex flex-col items-center text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Featured <span className="gradient-text">Indicators</span>
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-400 text-lg max-w-2xl">
             Key national metrics and performance indicators
           </p>
         </div>
@@ -76,10 +77,10 @@ export default function FeaturedIndicators() {
           {indicators.map((indicator, index) => (
             <div
               key={index}
-              className="card-hover bg-[#1a2332] border border-[#00d4ff]/10 rounded-xl p-6 relative overflow-hidden"
+              className="card-hover bg-[#1a2332] border border-[#00d4ff]/10 rounded-xl p-6 relative overflow-hidden flex flex-col"
             >
               {/* Background Chart */}
-              <div className="absolute bottom-0 left-0 right-0 h-20 opacity-10">
+              <div className="absolute bottom-0 left-0 right-0 h-20 opacity-10 pointer-events-none">
                 <svg width="100%" height="100%" preserveAspectRatio="none">
                   <polyline
                     fill="none"
@@ -92,23 +93,25 @@ export default function FeaturedIndicators() {
                 </svg>
               </div>
 
-              <div className="relative z-10">
+              <div className="relative z-10 flex flex-col h-full">
                 <div className="flex items-start justify-between mb-4">
-                  <div>
+                  <div className="flex-grow">
                     <h3 className="text-lg font-semibold text-gray-300 mb-1">
                       {indicator.title}
                     </h3>
                     <p className="text-xs text-gray-500">{indicator.period}</p>
                   </div>
-                  {indicator.trend === 'up' ? (
-                    <TrendingUp className="text-green-400" size={20} />
-                  ) : (
-                    <TrendingDown className="text-green-400" size={20} />
-                  )}
+                  <div className="flex-shrink-0 ml-3">
+                    {indicator.trend === 'up' ? (
+                      <TrendingUp className="text-green-400" size={20} />
+                    ) : (
+                      <TrendingDown className="text-green-400" size={20} />
+                    )}
+                  </div>
                 </div>
 
                 <div className="mb-3">
-                  <div className="text-4xl font-bold text-white mb-1">
+                  <div className="text-3xl md:text-4xl font-bold text-white mb-1">
                     {indicator.value}
                   </div>
                   <div className={`inline-flex items-center gap-1 text-sm font-semibold ${
@@ -119,7 +122,7 @@ export default function FeaturedIndicators() {
                   </div>
                 </div>
 
-                <p className="text-gray-400 text-sm">
+                <p className="text-gray-400 text-sm mt-auto">
                   {indicator.description}
                 </p>
               </div>
@@ -127,10 +130,13 @@ export default function FeaturedIndicators() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <button className="px-8 py-3 bg-[#1a2332] text-[#00d4ff] border border-[#00d4ff]/30 rounded-lg font-semibold hover:bg-[#1f2937] transition-colors">
+        <div className="flex justify-center mt-12">
+          <Link
+            href="/indicators"
+            className="px-8 py-3 bg-[#1a2332] text-[#00d4ff] border border-[#00d4ff]/30 rounded-lg font-semibold hover:bg-[#1f2937] transition-colors inline-block"
+          >
             View All Indicators
-          </button>
+          </Link>
         </div>
       </div>
     </section>

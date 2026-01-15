@@ -2,6 +2,7 @@
 
 import { Clock, ArrowRight, Eye } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function LatestInsights() {
   const insights = [
@@ -52,21 +53,22 @@ export default function LatestInsights() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-16 gap-6">
           <div className="flex-grow">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
               Latest <span className="gradient-text">Insights</span>
             </h2>
             <p className="text-gray-400 text-lg">
               Data-driven stories and analysis from Bangladesh
             </p>
           </div>
-          <button className="hidden md:block flex-shrink-0 px-6 py-3 bg-[#1a2332] text-[#00d4ff] border border-[#00d4ff]/30 rounded-lg font-semibold hover:bg-[#1f2937] transition-colors">
+          <Link href="/insights" className="hidden md:block flex-shrink-0 px-6 py-3 bg-[#1a2332] text-[#00d4ff] border border-[#00d4ff]/30 rounded-lg font-semibold hover:bg-[#1f2937] transition-colors">
             View All Articles
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {insights.map((insight, index) => (
-            <div
+            <Link
+              href={`/insights/${insight.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
               key={index}
               className="card-hover bg-[#1a2332] border border-[#00d4ff]/10 rounded-xl overflow-hidden group cursor-pointer flex flex-col"
             >
@@ -119,16 +121,34 @@ export default function LatestInsights() {
                   </span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
         <div className="flex justify-center mt-12 md:hidden">
-          <button className="w-full sm:w-auto px-8 py-3 bg-[#1a2332] text-[#00d4ff] border border-[#00d4ff]/30 rounded-lg font-semibold hover:bg-[#1f2937] transition-colors">
+          <Link href="/insights" className="w-full sm:w-auto px-8 py-3 bg-[#1a2332] text-[#00d4ff] border border-[#00d4ff]/30 rounded-lg font-semibold hover:bg-[#1f2937] transition-colors text-center block">
             View All Articles
-          </button>
+          </Link>
         </div>
       </div>
+
+      <style jsx>{`
+        .gradient-text {
+          background: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+        
+        .card-hover {
+          transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+        }
+      `}</style>
     </section>
   )
 }

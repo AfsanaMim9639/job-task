@@ -8,8 +8,8 @@ export default async function middleware(req) {
   const { pathname } = req.nextUrl
   
   // Public routes - accessible to everyone
-  const publicRoutes = ['/', '/datasets', '/map', '/insights', '/api-docs', '/about', '/contact', '/login']
-  const isPublicRoute = publicRoutes.includes(pathname) || pathname.startsWith('/_next') || pathname.startsWith('/api')
+  const publicRoutes = ['/', '/datasets', '/map', '/insights', '/api-docs', '/about', '/contact', '/login', '/indicators']
+  const isPublicRoute = publicRoutes.includes(pathname) || pathname.startsWith('/_next') || pathname.startsWith('/api') || pathname.startsWith('/indicators/')
   
   // Auth-only routes (need login but no specific role)
   const authRoutes = ['/profile', '/settings']
