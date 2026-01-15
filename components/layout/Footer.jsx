@@ -1,52 +1,72 @@
-// components/layout/Footer.jsx
-import React from 'react';
-import { Zap } from 'lucide-react';
+export default function Footer() {
+  const footerSections = [
+    {
+      title: 'Resources',
+      links: [
+        { name: 'Documentation', href: '#' },
+        { name: 'API Reference', href: '#' },
+        { name: 'Tutorials', href: '#' },
+        { name: 'Community', href: '#' }
+      ]
+    },
+    {
+      title: 'About',
+      links: [
+        { name: 'Our Mission', href: '#' },
+        { name: 'Team', href: '#' },
+        { name: 'Partners', href: '#' },
+        { name: 'Contact', href: '#' }
+      ]
+    },
+    {
+      title: 'Legal',
+      links: [
+        { name: 'Privacy Policy', href: '#' },
+        { name: 'Terms of Service', href: '#' },
+        { name: 'Data License', href: '#' }
+      ]
+    }
+  ]
 
-const Footer = () => {
   return (
-    <footer className="bg-[#1C2B39] text-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+    <footer className="bg-[#0d1428] border-t border-[#00d4ff]/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Brand */}
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#2D3D52] to-[#415169] rounded-lg flex items-center justify-center">
-                <Zap className="w-6 h-6 text-white" />
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-br from-[#00d4ff] to-[#0066ff] rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">BD</span>
               </div>
-              <span className="text-xl font-bold">ItemHub</span>
+              <span className="text-xl font-bold gradient-text">Open Data</span>
             </div>
-            <p className="text-gray-400">Manage your items effortlessly with our powerful platform.</p>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Empowering Bangladesh with accessible, transparent, and actionable data.
+            </p>
           </div>
-          <div>
-            <h4 className="font-bold mb-4">Product</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href="#features" className="hover:text-[#5E6D88] transition">Features</a></li>
-              <li><a href="/items" className="hover:text-[#5E6D88] transition">Items</a></li>
-              <li><a href="#services" className="hover:text-[#5E6D88] transition">Services</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-4">Company</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href="#about" className="hover:text-[#5E6D88] transition">About</a></li>
-              <li><a href="#contact" className="hover:text-[#5E6D88] transition">Contact</a></li>
-              <li><a href="#" className="hover:text-[#5E6D88] transition">Careers</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-4">Legal</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-[#5E6D88] transition">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-[#5E6D88] transition">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-[#5E6D88] transition">Cookie Policy</a></li>
-            </ul>
-          </div>
+          
+          {/* Footer Sections */}
+          {footerSections.map((section) => (
+            <div key={section.title}>
+              <h3 className="font-semibold text-white mb-4 text-base">{section.title}</h3>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                {section.links.map((link) => (
+                  <li key={link.name}>
+                    <a href={link.href} className="hover:text-[#00d4ff] transition-colors">
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-        <div className="border-t border-[#415169] pt-8 text-center text-gray-400">
-          <p>&copy; 2026 ItemHub. All rights reserved.</p>
+        
+        {/* Copyright */}
+        <div className="border-t border-[#00d4ff]/10 mt-8 pt-8 text-center text-gray-400 text-sm">
+          © 2026 BD Open Data Visualizer. All rights reserved.
         </div>
       </div>
     </footer>
-  );
-};
-
-export default Footer;
+  )
+}
