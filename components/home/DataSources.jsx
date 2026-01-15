@@ -1,7 +1,7 @@
 'use client'
 
 import { Database, CheckCircle, ArrowUpRight } from 'lucide-react'
-
+import Link from 'next/link'
 export default function DataSources() {
   const sources = [
     {
@@ -151,9 +151,11 @@ export default function DataSources() {
             We welcome partnerships with organizations committed to open data. 
             Join us in making Bangladesh&aposs data more accessible and transparent.
           </p>
-          <button className="px-8 py-3 bg-gradient-to-r from-[#00d4ff] to-[#0066ff] text-white rounded-lg font-semibold hover:scale-105 transition-transform">
-            Become a Data Partner
-          </button>
+          <Link href="/datasets">
+            <button className="px-8 py-3 bg-gradient-to-r from-[#00d4ff] to-[#0066ff] text-white rounded-lg font-semibold hover:scale-105 transition-transform">
+                Become a Data Partner
+            </button>
+            </Link>
         </div>
       </div>
     </section>

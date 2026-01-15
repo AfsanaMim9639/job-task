@@ -3,6 +3,7 @@
 import { MapPin, Layers, ZoomIn, Filter } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 
 // Dynamic import to avoid SSR issues with Leaflet
 const MapContainer = dynamic(() => import('react-leaflet').then(mod => mod.MapContainer), { ssr: false })
@@ -187,9 +188,11 @@ export default function MapPreview() {
               </div>
             </div>
 
-            <button className="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-[#00d4ff] to-[#0066ff] text-white rounded-lg font-semibold hover:scale-105 transition-transform mx-auto block">
-              Explore Full Map
-            </button>
+            <Link href="/map">
+  <button className="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-[#00d4ff] to-[#0066ff] text-white rounded-lg font-semibold hover:scale-105 transition-transform mx-auto block">
+    Explore Full Map
+  </button>
+</Link>
           </div>
         </div>
       </div>
