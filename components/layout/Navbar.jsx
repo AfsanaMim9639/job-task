@@ -51,13 +51,16 @@ export default function Navbar() {
     const links = []
 
     // All authenticated users
-    if (role=== 'user') {
+    if (role=== 'public') {
       links.push({ name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard })
     }
 
   // Only Admins can access Admin Dashboard
   if (role === 'admin') {
     links.push({ name: 'Admin Dashboard', href: '/admin', icon: Shield })
+  }
+  if (role === 'contributor') {
+    links.push({ name: 'Contributor Dashboard', href: '/contributor-dashboard', icon: LayoutDashboard })
   }
 
     // Contributors and Admins can upload
