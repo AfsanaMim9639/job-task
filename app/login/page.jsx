@@ -150,38 +150,7 @@ export default function LoginPage() {
             Sign in with Google
           </button>
 
-          {/* Demo Credentials */}
-          <div className="mt-6 p-4 bg-[#0d1428] border border-[#00d4ff]/10 rounded-lg space-y-3">
-            <p className="text-xs text-gray-400 mb-3 font-semibold">Demo Credentials:</p>
-            
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs text-gray-300">Admin</p>
-                  <p className="text-xs text-[#00d4ff]">admin@bddata.com</p>
-                </div>
-                <span className="px-2 py-1 text-xs rounded-full bg-red-500/20 text-red-400 border border-red-500/30">ADMIN</span>
-              </div>
-              
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs text-gray-300">Contributor</p>
-                  <p className="text-xs text-[#00d4ff]">contributor@bddata.com</p>
-                </div>
-                <span className="px-2 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30">CONTRIBUTOR</span>
-              </div>
-              
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs text-gray-300">Public User</p>
-                  <p className="text-xs text-[#00d4ff]">user@bddata.com</p>
-                </div>
-                <span className="px-2 py-1 text-xs rounded-full bg-gray-500/20 text-gray-400 border border-gray-500/30">PUBLIC</span>
-              </div>
-            </div>
-            
-            <p className="text-xs text-gray-500 pt-2 border-t border-[#00d4ff]/10">Password: <span className="text-[#00d4ff]">password123</span></p>
-          </div>
+         
         </div>
       </div>
     </div>
