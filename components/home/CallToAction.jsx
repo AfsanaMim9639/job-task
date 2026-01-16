@@ -1,7 +1,7 @@
 'use client'
 
 import { ArrowRight, Download, Code, BookOpen, Mail } from 'lucide-react'
-
+import Link from 'next/link'
 function CallToAction() {
   const features = [
     {
@@ -51,10 +51,12 @@ function CallToAction() {
               <button className="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-[#00d4ff] to-[#0066ff] text-white rounded-lg font-semibold text-lg neon-glow hover:scale-105 transition-transform flex items-center justify-center gap-2">
                 Start Exploring <ArrowRight size={24} />
               </button>
-              <button className="w-full sm:w-auto px-10 py-4 bg-[#1a2332] text-[#00d4ff] border-2 border-[#00d4ff]/30 rounded-lg font-semibold text-lg hover:bg-[#1f2937] transition-colors flex items-center justify-center gap-2">
-                <Code size={20} />
-                API Documentation
-              </button>
+              <Link href="/api-docs" className="w-full sm:w-auto">
+                <button className="w-full px-10 py-4 bg-[#1a2332] text-[#00d4ff] border-2 border-[#00d4ff]/30 rounded-lg font-semibold text-lg hover:bg-[#1f2937] transition-colors flex items-center justify-center gap-2">
+                    <Code size={20} />
+                    API Documentation
+                </button>
+                </Link>
             </div>
 
             {/* Trust Indicators */}

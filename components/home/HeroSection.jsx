@@ -2,7 +2,7 @@
 
 import { ArrowRight, Search } from 'lucide-react'
 import { useState } from 'react'
-
+import Link from 'next/link'
 export default function HeroSection() {
   const [searchQuery, setSearchQuery] = useState('')
 
@@ -39,9 +39,11 @@ export default function HeroSection() {
             <button className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#00d4ff] to-[#0066ff] text-white text-sm sm:text-base rounded-lg font-semibold neon-glow hover:scale-105 transition-transform flex items-center justify-center gap-2 whitespace-nowrap">
               Explore Data <ArrowRight size={20} />
             </button>
+            <Link href="/api-docs">
             <button className="px-6 sm:px-8 py-3 sm:py-4 bg-[#1a2332] text-[#00d4ff] text-sm sm:text-base border border-[#00d4ff]/30 rounded-lg font-semibold hover:bg-[#1f2937] transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
-              View Documentation
+                View Documentation
             </button>
+            </Link>
           </div>
           
           {/* Search Bar */}

@@ -1,6 +1,6 @@
 'use client'
 
-import { Menu, X, User, LogOut, LayoutDashboard, Database, Upload, Shield, FileText, Settings, Info, Mail, TrendingUp } from 'lucide-react'
+import { Home, Menu, X, User, LogOut, LayoutDashboard, Database, Upload, Shield, FileText, Settings, Info, Mail, TrendingUp } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 import { useSession, signOut } from 'next-auth/react'
 import Link from 'next/link'
@@ -33,7 +33,7 @@ export default function Navbar() {
 
   // Public routes - accessible to everyone
   const publicLinks = [
-    
+    { name: 'Home', href: '/', icon: Home },
     { name: 'Datasets', href: '/datasets', icon: Database },
     { name: 'Indicators', href: '/indicators', icon: TrendingUp },
     { name: 'Map', href: '/map', icon: FileText },
@@ -61,9 +61,7 @@ export default function Navbar() {
     }
 
     // Only Admins
-    if (role === 'admin') {
-      links.push({ name: 'Admin Panel', href: '/admin', icon: Shield })
-    }
+   
 
     return links
   }
