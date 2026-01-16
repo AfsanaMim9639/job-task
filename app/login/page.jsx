@@ -27,7 +27,18 @@ export default function LoginPage() {
       if (result?.error) {
         setError('Invalid email or password')
       } else {
-        router.push('/dashboard')
+        // Fetch session to get user role
+        const response = await fetch('/api/auth/session')
+        const session = await response.json()
+        
+        // Redirect based on role
+        if (session?.user?.role === 'admin') {
+          router.push('/admin')
+        } else if (session?.user?.role === 'contributor') {
+          router.push('/contributor-dashboard')
+        } else {
+          router.push('/dashboard')
+        }
       }
     } catch (error) {
       setError('Something went wrong')
@@ -39,7 +50,9 @@ export default function LoginPage() {
   const handleGoogleSignIn = async () => {
     setLoading(true)
     try {
-      await signIn('google', { callbackUrl: '/dashboard' })
+      await signIn('google', { 
+        callbackUrl: '/dashboard' // Google sign in এর জন্য default
+      })
     } catch (error) {
       setError('Failed to sign in with Google')
       setLoading(false)
@@ -150,7 +163,7 @@ export default function LoginPage() {
             Sign in with Google
           </button>
 
-         
+          
         </div>
       </div>
     </div>
