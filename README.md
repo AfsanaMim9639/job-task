@@ -93,7 +93,6 @@
 ### Prerequisites
 
 - Node.js 18.0 or higher
-- MongoDB Atlas account
 - Git
 
 ### 📥 **Installation Steps**
@@ -117,8 +116,6 @@ touch .env.local
 Create a `.env.local` file in the root directory:
 
 ```env
-# MongoDB Connection
-MONGODB_URI=your_mongodb_connection_string
 
 # NextAuth Configuration
 NEXTAUTH_SECRET=your_nextauth_secret_key
@@ -135,7 +132,7 @@ GOOGLE_CLIENT_SECRET=your_google_client_secret
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3001](http://localhost:3001) in your browser.
 
 ### 🏗️ **Build for Production**
 
@@ -468,13 +465,13 @@ For testing purposes, use these demo accounts:
 <div align="center">
 
 ### Homepage
-<img src="https://via.placeholder.com/800x400/0a0e1a/00d4ff?text=Homepage+Hero+Section" alt="Homepage" />
+<img src="./public/images/home.png" alt="Homepage" />
 
 ### Interactive Map
-<img src="https://via.placeholder.com/800x400/0a0e1a/00d4ff?text=Geospatial+Data+Visualization" alt="Map" />
+<img src="./public/images/map.png" alt="Map" />
 
 ### Dashboard
-<img src="https://via.placeholder.com/800x400/0a0e1a/00d4ff?text=Analytics+Dashboard" alt="Dashboard" />
+<img src="./public/images/dashboard.png" alt="Dashboard" />
 
 </div>
 
@@ -490,11 +487,6 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
----
-
-## 📄 **License**
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 

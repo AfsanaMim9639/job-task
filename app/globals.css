@@ -153,3 +153,13 @@ a:focus {
   background: #0d1428 !important;
   color: #00d4ff !important;
 }
+
+/* Force hide search and filter icons in navbar */
+nav svg[class*="lucide-search"],
+nav svg[class*="lucide-filter"],
+header svg[class*="lucide-search"],
+header svg[class*="lucide-filter"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}

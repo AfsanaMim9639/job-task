@@ -1,6 +1,6 @@
 'use client'
 
-import { MapPin, Layers, ZoomIn, Filter } from 'lucide-react'
+import { MapPin, Layers } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
@@ -8,7 +8,6 @@ import Link from 'next/link'
 // Dynamic import to avoid SSR issues with Leaflet
 const MapContainer = dynamic(() => import('react-leaflet').then(mod => mod.MapContainer), { ssr: false })
 const TileLayer = dynamic(() => import('react-leaflet').then(mod => mod.TileLayer), { ssr: false })
-const Marker = dynamic(() => import('react-leaflet').then(mod => mod.Marker), { ssr: false })
 const Popup = dynamic(() => import('react-leaflet').then(mod => mod.Popup), { ssr: false })
 const CircleMarker = dynamic(() => import('react-leaflet').then(mod => mod.CircleMarker), { ssr: false })
 
@@ -63,17 +62,7 @@ export default function MapPreview() {
 
         <div className="grid grid-cols-1 gap-8">
           {/* Map Container - Full Width */}
-          <div className="bg-[#1a2332] border border-[#00d4ff]/10 rounded-xl overflow-hidden">
-            {/* Map Controls */}
-            <div className="absolute top-6 right-6 z-[1000] flex gap-2">
-              <button className="p-2 bg-[#0d1428]/90 backdrop-blur-sm border border-[#00d4ff]/20 rounded-lg hover:bg-[#1a2332] transition-colors">
-                <ZoomIn className="text-[#00d4ff]" size={20} />
-              </button>
-              <button className="p-2 bg-[#0d1428]/90 backdrop-blur-sm border border-[#00d4ff]/20 rounded-lg hover:bg-[#1a2332] transition-colors">
-                <Filter className="text-[#00d4ff]" size={20} />
-              </button>
-            </div>
-
+          <div className="bg-[#1a2332] border border-[#00d4ff]/10 rounded-xl overflow-hidden relative">
             {/* Leaflet Map */}
             <div className="h-[500px] md:h-[600px]">
               {isMounted ? (
@@ -189,10 +178,10 @@ export default function MapPreview() {
             </div>
 
             <Link href="/map">
-  <button className="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-[#00d4ff] to-[#0066ff] text-white rounded-lg font-semibold hover:scale-105 transition-transform mx-auto block">
-    Explore Full Map
-  </button>
-</Link>
+              <button className="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-[#00d4ff] to-[#0066ff] text-white rounded-lg font-semibold hover:scale-105 transition-transform mx-auto block">
+                Explore Full Map
+              </button>
+            </Link>
           </div>
         </div>
       </div>
