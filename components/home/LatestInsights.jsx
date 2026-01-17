@@ -3,50 +3,11 @@
 import { Clock, ArrowRight, Eye } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { articles } from '@/data/articles'
 
 export default function LatestInsights() {
-  const insights = [
-    {
-      category: 'Economic Analysis',
-      title: 'Bangladesh\'s Digital Economy Grows 28% in 2025',
-      excerpt: 'The digital economy sector shows remarkable growth with increased e-commerce adoption and fintech innovation across urban and rural areas.',
-      author: 'Dr. Rahman',
-      date: '2 days ago',
-      readTime: '5 min read',
-      views: '12.5K',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'
-    },
-    {
-      category: 'Infrastructure',
-      title: 'Metro Rail Network Expansion: Impact on Dhaka Traffic',
-      excerpt: 'New data reveals 23% reduction in traffic congestion along metro corridors, with significant improvements in commute times.',
-      author: 'Sarah Ahmed',
-      date: '5 days ago',
-      readTime: '7 min read',
-      views: '8.3K',
-      image: 'https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?w=800&q=80'
-    },
-    {
-      category: 'Healthcare',
-      title: 'Rural Healthcare Access Improves with Telemedicine',
-      excerpt: 'Analysis of 500+ community clinics shows 45% increase in patient consultations through digital health platforms.',
-      author: 'Dr. Fatima',
-      date: '1 week ago',
-      readTime: '6 min read',
-      views: '15.2K',
-      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80'
-    },
-    {
-      category: 'Education',
-      title: 'STEM Education Rise: 35% More Enrollments in 2025',
-      excerpt: 'Universities report significant growth in science and technology programs, driven by industry demand and government initiatives.',
-      author: 'Prof. Hasan',
-      date: '1 week ago',
-      readTime: '4 min read',
-      views: '6.7K',
-      image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80'
-    }
-  ]
+  // Latest 4টা article নিন
+  const insights = articles.slice(0, 4)
 
   return (
     <section className="py-24 px-6 bg-[#0a0e1a]">
@@ -68,8 +29,8 @@ export default function LatestInsights() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {insights.map((insight, index) => (
             <Link
-              href={`/insights/${insight.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
-              key={index}
+              href={`/insights/${insight.slug}`}
+              key={insight.id}
               className="card-hover bg-[#1a2332] border border-[#00d4ff]/10 rounded-xl overflow-hidden group cursor-pointer flex flex-col"
             >
               <div className="h-48 w-full relative flex-shrink-0 overflow-hidden bg-[#0d1428]">
@@ -100,10 +61,10 @@ export default function LatestInsights() {
 
                 <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-gray-500 mb-4">
                   <div className="flex items-center gap-3">
-                    <span className="truncate">{insight.author}</span>
+                    <span className="truncate">{insight.author.name}</span>
                     <span className="flex items-center gap-1 flex-shrink-0">
                       <Clock size={12} />
-                      {insight.date}
+                      {insight.publishedDate}
                     </span>
                   </div>
                   <div className="flex items-center gap-3 flex-shrink-0">
